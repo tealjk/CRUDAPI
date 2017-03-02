@@ -1,7 +1,4 @@
-/*
-* Methods: Insert - API Key
-* Creates the users API key.
-*/
+
 
 Meteor.methods({
   initApiKey: function( userId ) {

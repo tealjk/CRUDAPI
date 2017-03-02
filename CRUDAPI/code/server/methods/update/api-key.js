@@ -4,22 +4,22 @@
 */
 
 Meteor.methods({
-  regenerateApiKey: function( userId ){
-    check( userId, Meteor.userId() );
+    regenerateApiKey: function( userId ){
+        check( userId, Meteor.userId() );
 
-    var newKey = Random.hexString( 32 );
+        var newKey = Random.hexString( 32 );
 
-    // Perform the update.
-    try {
-      var keyId = APIKeys.update( { "owner": userId }, {
-        $set: {
-          "key": newKey
+        // Perform the update.
+        try {
+            var keyId = APIKeys.update( { "owner": userId }, {
+                $set: {
+                    "key": newKey
+                }
+            });
+            return keyId;
+        } catch(exception) {
+            // If an error occurs, return it to the client.
+            return exception;
         }
-      });
-      return keyId;
-    } catch(exception) {
-      // If an error occurs, return it to the client.
-      return exception;
     }
-  }
 });

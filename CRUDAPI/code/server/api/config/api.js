@@ -1,4 +1,5 @@
 API = {
+
   authentication: function( apiKey ) {
     var getUser = APIKeys.findOne( { "key": apiKey }, { fields: { "owner": 1 } } );
     if ( getUser ) {
@@ -7,6 +8,7 @@ API = {
       return false;
     }
   },
+
   connection: function( request ) {
     var getRequestContents = API.utility.getRequestContents( request ),
         apiKey             = getRequestContents.api_key,
@@ -22,6 +24,8 @@ API = {
       return { error: 401, message: "Invalid API key." };
     }
   },
+
+
   handleRequest: function( context, resource, method ) {
     var connection = API.connection( context.request );
     if ( !connection.error ) {
@@ -30,6 +34,8 @@ API = {
       API.utility.response( context, 401, connection );
     }
   },
+
+
   methods: {
 
 
@@ -80,6 +86,8 @@ API = {
           API.utility.response( context, 403, { error: 403, message: "POST calls must have a name, crust, and toppings passed in the request body in the correct formats." } );
         }
       },
+
+
       PUT: function( context, connection ) {
         var hasQuery  = API.utility.hasData( connection.data ),
             validData = API.utility.validate( connection.data, Match.OneOf(
@@ -91,6 +99,7 @@ API = {
               { "_id": String, "crust": String, "toppings": [ String ] },
               { "_id": String, "name": String, "crust": String, "toppings": [ String ] }
             ));
+
 
         if ( hasQuery && validData ) {
           // Save the ID of the pizza we want to update and then sanatize our
@@ -130,7 +139,13 @@ API = {
       }
     }
   },
+
+
+
+
+
   utility: {
+
     getRequestContents: function( request ) {
       switch( request.method ) {
         case "GET":
@@ -141,14 +156,23 @@ API = {
           return request.body;
       }
     },
+
+
+
+
     hasData: function( data ) {
       return Object.keys( data ).length > 0 ? true : false;
     },
+
+
     response: function( context, statusCode, data ) {
       context.response.setHeader( 'Content-Type', 'application/json' );
       context.response.statusCode = statusCode;
       context.response.end( JSON.stringify( data ) );
     },
+
+
+
     validate: function( data, pattern ) {
       return Match.test( data, pattern );
     }

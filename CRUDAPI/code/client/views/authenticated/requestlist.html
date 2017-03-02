@@ -1,15 +1,20 @@
+
+
 <template name="requestlist">
 
 
 
-
-    <h1>requestList</h1>
-
-
-
-
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <h3 class="page-header">Login</h3>
+        <p class="alert alert-info">To make some HTTP requests on the API  (using the url http://tmc-008-demo.meteor.com/api/v1/pizza)!</p>
 
 
+        <form id="application-login" class="insert">
+            <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+
+                <input type="email" name="emailAddress" class="form-control" placeholder="Email Address">
 
 
 
@@ -17,4 +22,26 @@
 
 
 
+
+
+            </div> <!-- end .form-group -->
+
+
+            <div class="form-group">
+                <label for="password"><span class="pull-left">Password</span>
+                    <a class="pull-right" href="{{pathFor 'recover-password'}}">Forgot Password?</a></label>
+
+                <input type="password" name="password" class="form-control" placeholder="Password">
+
+            </div> <!-- end .form-group -->
+            <div class="form-group">
+
+                <input type="submit" class="btn btn-success" value="Login">
+
+    </div> <!-- end .form-group -->
+
+        </form>
+        <p>Don't have an account? <a href="{{pathFor 'signup'}}">Sign Up</a>.</p>
+    </div> <!-- end .col-xs-12 -->
+</div> <!-- end .row -->
 </template>

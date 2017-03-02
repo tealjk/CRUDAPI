@@ -1,0 +1,49 @@
+<template name="landing">
+
+
+        <div class="container-fluid">
+            <h4>Subheading and any instructions go here... </h4>
+
+            <div class="searchBox">
+                <div id="pool" class="col-sm-4 form-group">
+                    <label for="pool">Select FSO Talent Pool:</label>
+                    <select id="poolList" class="form-control">
+                        <option value="">Select One</option>
+                        {{#each distinctPools}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div id="major" class="form-group col-sm-4">
+                    <label for="major">Select Major:</label>
+                    <select id="majorList" class="form-control" multiple>
+                        {{#if majorsByPool.length}}
+                        {{#each majorsByPool}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                        {{else}}
+                        {{#each distinctMajors}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+            </div>
+            {{> candidatesListTile this}}
+            {{> resumeModal  }}
+
+        </div>
+
+
+
+    </template>
+
+
+
+
+
+
+
+
+

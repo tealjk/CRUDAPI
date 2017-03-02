@@ -19,6 +19,9 @@ Router.route( '/api/v1/pizza', function() {
   // methods, followed by an end to that request (the pre-flight). Once this is
   // received by the requesting server, it will attempt to perform the actual
   // request (GET, POST, PUT, or DELETE).
+
+
+
   if ( this.request.method === "OPTIONS" ) {
     this.response.setHeader( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
     this.response.setHeader( 'Access-Control-Allow-Methods', 'POST, PUT, GET, DELETE, OPTIONS' );

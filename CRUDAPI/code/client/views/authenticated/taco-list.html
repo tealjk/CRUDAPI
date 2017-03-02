@@ -1,0 +1,19 @@
+<!--
+ Meteor makes use of Handlebars templates for rendering HTML on the client.
+ This is an example of a tempalte where you'd use an {{each}} loop to pull data out of your DB.
+-->
+<template name="tacos">
+    <h3>My Favorite Tacos</h3>
+    {{#if tacos}}
+    <ul class="tacos-list">
+        {{#each tacos}}
+        {{>taco}}
+        {{/each}}
+    </ul>
+    {{/if}}
+</template>
+
+<template name="taco">
+    <!-- Because Meteor relies heavily on reactivity and watches for changes on the template, it's helpful to break up components into separate templates to encapsulate reactivity (i.e. only reload/refresh what's changed).-->
+    <li>{{taco.name}}</li>
+</template>

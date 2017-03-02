@@ -1,11 +1,7 @@
 /*
 *  Controller: Header
 *  Template: /client/includes/_header.html
-*/
 
-/*
-* Created
-*/
 
 Template.header.onCreated(function(){
   // Code to run when template is created goes here.

@@ -1,0 +1,30 @@
+<template name="adminLogin">
+    <div class="alert-container">
+        {{#if errorMessage}}
+        <div class="alert alert-danger">
+            <span><i class="icon-sign"></i>{{errorMessage}}</span>
+        </div>
+        {{/if}}
+    </div>
+
+    <div style="margin:30px">
+        Please log in to access University Recruitment Portal Admin functions.
+    </div>
+    <div id="adminLogin">
+        <form data-toggle="validator" role="form" class="adminLogin">
+            <div class="form-group">
+                <div class="form-group col-sm-4">
+                    <label for="email" class="control-label">Email Address</label>
+                    <input type="email" class="form-control" name="loginEmail" required>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="password" class="control-label">Password</label>
+                    <input type="password" class="form-control" name="loginPassword" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary submit">Login</button>
+            </div>
+        </form>
+    </div>
+</template>

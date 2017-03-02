@@ -16,6 +16,9 @@ Template.apiKey.helpers({
   }
 });
 
+
+
+
 Template.apiKey.events({
   'click .regenerate-api-key': function(){
      var userId              = Meteor.userId(),
